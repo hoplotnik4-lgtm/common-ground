@@ -1,0 +1,17 @@
+# OS / file-sync junk
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+*~
+
+# Editor / IDE
+.vscode/
+.idea/
+
+# Logs / temp
+*.log
+*.tmp
+
+# Claude Code local (machine-specific) settings
+.claude/settings.local.json
