@@ -204,6 +204,7 @@ header.nav{
 .city{
   background:var(--foam); border-radius:20px; overflow:hidden;
   border:1px solid var(--plum-soft); transition:transform .25s;
+  scroll-margin-top:90px;
 }
 .city:hover{ transform:translateY(-6px); }
 .city .top{ background:var(--plum); color:var(--foam); padding:26px 24px 22px; text-align:center; }
@@ -232,17 +233,19 @@ header.nav{
 @keyframes slide{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
 
 /* Footer */
-footer{ background:var(--foam); padding:80px 0 40px; border-top:1px solid var(--plum-soft); }
+footer{ background:var(--foam); padding:80px 0 40px; border-top:1px solid var(--plum-soft); text-align:center; }
 .foot-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px; align-items:start; }
-.foot-brand .foot-logo{ width:210px; max-width:70%; height:auto; display:block; margin-bottom:16px; }
+.foot-brand .foot-logo{ width:210px; max-width:70%; height:auto; display:block; margin:0 auto 16px; }
 .foot-brand .roles{ font-size:.9rem; opacity:.75; margin:0 0 12px; letter-spacing:.02em; }
 .foot-brand .tagline{ font-size:1rem; }
 .foot-col h5{ font-family:var(--body); text-transform:uppercase; letter-spacing:.18em; font-size:.72rem; color:var(--plum); margin-bottom:14px; }
 .foot-col a, .foot-col p{ display:block; font-size:.92rem; opacity:.8; margin-bottom:8px; }
 .foot-col a:hover{ color:var(--plum); opacity:1; }
+.foot-nav a{ font-family:var(--head); color:var(--meadow); opacity:1; transition:color .2s; }
+.foot-nav a:hover{ color:var(--plum); }
 .foot-bottom{
   margin-top:56px; padding-top:24px; border-top:1px solid var(--plum-soft);
-  display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+  display:flex; justify-content:center; flex-wrap:wrap; gap:12px;
   font-size:.78rem; opacity:.65;
 }
 
@@ -497,7 +500,7 @@ footer{ background:var(--foam); padding:80px 0 40px; border-top:1px solid var(--
       <p>The brand territory is the everyday bloom — a place where simple moments begin to flower. Each café feels connected to its city and its local flower.</p>
     </div>
     <div class="cities">
-      <div class="city">
+      <div class="city" id="milano">
         <div class="top">
           <svg class="flower-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="3"/><path d="M12 9c0-3-1-5-3-5M12 9c0-3 1-5 3-5M15 12c3 0 5-1 5-3M9 12c-3 0-5-1-5-3M12 15c0 3 1 5 3 5M12 15c0 3-1 5-3 5M9 12c-3 0-5 1-5 3M15 12c3 0 5 1 5 3"/></svg>
           <div class="cty">Milano</div><div class="flr">Magnolia</div>
@@ -508,7 +511,7 @@ footer{ background:var(--foam); padding:80px 0 40px; border-top:1px solid var(--
           <p class="city-bouquet">Bouquet — pink magnolia, ranunculus, sweet peas, and delicate seasonal greenery.</p>
         </div>
       </div>
-      <div class="city">
+      <div class="city" id="paris">
         <div class="top">
           <svg class="flower-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21V8"/><path d="M12 8c-2-3-2-5 0-6 2 1 2 3 0 6Z"/><path d="M12 12c-3-1-5 0-6 2 2 2 4 1 6-2Z"/><path d="M12 12c3-1 5 0 6 2-2 2-4 1-6-2Z"/></svg>
           <div class="cty">Paris</div><div class="flr">Iris</div>
@@ -519,7 +522,7 @@ footer{ background:var(--foam); padding:80px 0 40px; border-top:1px solid var(--
           <p class="city-bouquet">Bouquet — iris, garden roses, lisianthus, and touches of soft foliage.</p>
         </div>
       </div>
-      <div class="city">
+      <div class="city" id="london">
         <div class="top">
           <svg class="flower-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21V6"/><circle cx="12" cy="5" r="2"/><circle cx="9" cy="9" r="1.6"/><circle cx="15" cy="9" r="1.6"/><circle cx="10" cy="13" r="1.6"/><circle cx="14" cy="13" r="1.6"/></svg>
           <div class="cty">London</div><div class="flr">Rosebay</div>
@@ -530,7 +533,7 @@ footer{ background:var(--foam); padding:80px 0 40px; border-top:1px solid var(--
           <p class="city-bouquet">Bouquet — rosebay, scabiosa, waxflower, and loose meadow greenery.</p>
         </div>
       </div>
-      <div class="city">
+      <div class="city" id="amsterdam">
         <div class="top">
           <svg class="flower-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21v-8"/><path d="M12 13c-3 0-5-2-5-5 0 0 3-1 5 2 2-3 5-2 5-2 0 3-2 5-5 5Z"/></svg>
           <div class="cty">Amsterdam</div><div class="flr">Tulip</div>
@@ -591,24 +594,24 @@ footer{ background:var(--foam); padding:80px 0 40px; border-top:1px solid var(--
     <div class="foot-grid">
       <div class="foot-brand">
         <svg class="foot-logo" viewBox="0 0 950.96 445.93" role="img" aria-label="Common Ground logo" xmlns="http://www.w3.org/2000/svg"><use href="#cg-logo"/></svg>
-        <div class="roles">coffee ritual · baked goods · flower shop</div>
         <p class="tagline">rooted in nature, shaped by connection.</p>
       </div>
-      <div class="foot-col">
+      <div class="foot-col foot-nav">
         <h5>Visit</h5>
-        <p>Milan, Italy</p>
-        <a href="https://www.commonground.com">www.commonground.com</a>
-        <a href="#">@commonground</a>
+        <a href="#milano">Milan, Italy</a>
+        <a href="#paris">Paris, France</a>
+        <a href="#london">London, UK</a>
+        <a href="#amsterdam">Amsterdam, Netherlands</a>
       </div>
-      <div class="foot-col">
+      <div class="foot-col foot-nav">
         <h5>Explore</h5>
         <a href="#menu">Our Menu</a>
-        <a href="#cities">Our Cities</a>
         <a href="#values">Our Values</a>
+        <a href="#">Our Instagram</a>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>Alejandra Lucero · Hana Oplotnik · Maria Luiza Nascimento · Bára Haim</span>
+      <span>Alejandra Lucero · Hana Oplotnik · Maria Luiza Nascimento · Büşra Haşim</span>
       <span>Communication Design · Alessandro Tunno · June 2026</span>
     </div>
   </div>
