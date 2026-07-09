@@ -174,19 +174,16 @@ header.nav{
 /* Values */
 .values{ display:grid; grid-template-columns:repeat(5,1fr); gap:18px; }
 .value{
-  background:var(--foam); border-radius:18px; padding:28px 22px;
-  border:1px solid var(--plum-soft); transition:transform .25s, box-shadow .25s;
+  background:var(--meadow); border-radius:18px; padding:28px 22px; text-align:center;
+  border:1px solid transparent; transition:transform .25s, box-shadow .25s;
 }
 .value:hover{ transform:translateY(-6px); box-shadow:0 18px 40px -22px rgba(111,2,68,.45); }
-.value .ico{ width:40px; height:40px; margin-bottom:16px; color:var(--plum); }
-.value h4{ font-size:1.05rem; text-transform:uppercase; letter-spacing:.14em; color:var(--plum); margin-bottom:10px; }
-.value p{ font-size:.9rem; opacity:.82; line-height:1.55; }
+.value h4{ font-family:var(--head); font-weight:400; font-size:1.55rem; color:var(--plum); margin-bottom:10px; }
+.value p{ font-size:.82rem; color:var(--ink); opacity:.85; line-height:1.5; }
 
 /* Rituals */
 .rituals{ display:grid; grid-template-columns:repeat(3,1fr); gap:26px; }
 .ritual{ text-align:center; padding:12px; }
-.ritual .ico{ width:66px; height:66px; margin:0 auto 22px; color:var(--plum); }
-.band.plum .ritual .ico{ color:var(--meadow); }
 .ritual h3{ font-size:1.5rem; margin-bottom:6px; }
 .ritual .sub{ font-family:var(--body); text-transform:uppercase; letter-spacing:.2em; font-size:.7rem; opacity:.7; margin-bottom:14px; }
 .ritual p{ font-size:.98rem; opacity:.88; max-width:30ch; margin:0 auto; }
@@ -257,6 +254,11 @@ header.nav{
   background:linear-gradient(to top, var(--pale) 15%, rgba(248,245,190,.75) 30%, rgba(248,245,190,0) 52%);
 }
 .face.front > *{ position:relative; z-index:1; }
+/* Phone: cards go full-width, so give them more height and a smaller flower
+   so the art sits cleanly above the label instead of overflowing behind it. */
+@media(max-width:600px){
+  .face.front{ min-height:320px; background-size:58% auto; background-position:center 24%; }
+}
 .city .cty{ font-family:var(--body); text-transform:uppercase; letter-spacing:.24em; font-size:.72rem; color:var(--plum); }
 .city .flr{ font-family:var(--head); font-size:1.55rem; margin-top:4px; color:var(--plum); }
 .flip-hint{ margin-top:16px; font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--plum); opacity:.65; }
@@ -273,10 +275,10 @@ header.nav{
 .ground-note p{ opacity:.85; }
 
 /* Phrases marquee */
-.phrases{ background:var(--plum); color:var(--pale); padding:38px 0; overflow:hidden; }
+.phrases{ background:var(--plum); color:var(--pale); padding:24px 0; overflow:hidden; }
 .phrases .row{ display:flex; gap:0; white-space:nowrap; animation:slide 40s linear infinite; }
 .phrases .row span{
-  font-family:var(--head); font-size:clamp(1.6rem,3.6vw,2.6rem); font-weight:300;
+  font-family:var(--head); font-size:clamp(1.1rem,2.6vw,1.7rem); font-weight:300;
   padding:0; opacity:.9;
 }
 .phrases .row span::after{ content:""; display:inline-block; width:2.2em; height:2.2em; margin:0 44px; vertical-align:middle; background:url('flower-yellow.png') center/contain no-repeat; }
@@ -392,27 +394,22 @@ footer{ background:var(--foam); padding:80px 0 40px; border-top:1px solid var(--
     </div>
     <div class="values">
       <div class="value">
-        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10Z"/></svg>
         <h4>Passion</h4>
         <p>Is the care behind every detail. It shows in the craft, creativity, and love placed into each product and experience.</p>
       </div>
       <div class="value">
-        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22c0-6 4-9 4-13a4 4 0 0 0-8 0c0 4 4 7 4 13Z"/><path d="M12 22V9"/></svg>
         <h4>Life</h4>
         <p>Brings freshness, energy, and movement to the brand. It reflects the beauty of nature and makes the space feel vibrant and full of feeling.</p>
       </div>
       <div class="value">
-        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v18"/><path d="M4 8h16"/><circle cx="7" cy="14" r="3"/><circle cx="17" cy="14" r="3"/></svg>
         <h4>Balance</h4>
         <p>Means harmony between coffee, flowers, and baking. It creates a space that feels calm, warm, and alive at the same time.</p>
       </div>
       <div class="value">
-        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="8" r="3"/><circle cx="16" cy="10" r="2.4"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M15 20c0-2.5 1.6-4.6 4-5.3"/></svg>
         <h4>Community</h4>
         <p>Is about bringing people together. Common Ground is a place where people can connect, share moments, and feel at home.</p>
       </div>
       <div class="value">
-        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 13a8 8 0 0 1 16 0"/><path d="M8 13a4 4 0 0 1 8 0"/><path d="M3 13h18"/><path d="M12 5V3"/></svg>
         <h4>Service</h4>
         <p>Is warm, thoughtful, and attentive. It means making each person feel welcomed, valued, and cared for.</p>
       </div>
@@ -428,19 +425,16 @@ footer{ background:var(--foam); padding:80px 0 40px; border-top:1px solid var(--
     </div>
     <div class="rituals">
       <div class="ritual">
-        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9Z"/><path d="M16 10h2.5a2.5 2.5 0 0 1 0 5H16"/><path d="M7 5c0-1 1-1 1-2M11 5c0-1 1-1 1-2"/></svg>
         <h3>Coffee</h3>
         <p class="sub">To Sip</p>
         <p>Warm drinks inspired by the city's flower, made for slow mornings and quiet pauses.</p>
       </div>
       <div class="ritual">
-        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M4 12a8 4 0 0 1 16 0v3a8 4 0 0 1-16 0Z"/><path d="M8 12v3M12 12v3M16 12v3"/></svg>
         <h3>Bakery</h3>
         <p class="sub">To Share</p>
         <p>Fresh pastries and breads that feel golden, handmade, and comforting.</p>
       </div>
       <div class="ritual">
-        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M12 12c-3 0-5-2-5-5 3 0 5 2 5 5ZM12 12c3 0 5-2 5-5-3 0-5 2-5 5Z"/><path d="M12 12v9"/><path d="M12 21c-2 0-4-1-4-3 2 0 4 1 4 3ZM12 21c2 0 4-1 4-3-2 0-4 1-4 3Z"/></svg>
         <h3>Flowers</h3>
         <p class="sub">To Carry</p>
         <p>Seasonal bouquets and floral details that extend the experience beyond the café and into daily life.</p>
