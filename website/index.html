@@ -239,25 +239,25 @@ header.nav{
 /* FRONT — label over the placeholder graphic (plum for now; swap in a
    per-city background image on each .city#… .face.front later). */
 .face.front{
-  color:var(--plum); min-height:230px; position:relative;
+  color:var(--plum); min-height:230px;
   justify-content:flex-end; padding-bottom:26px;
-  background:var(--pale) no-repeat center 28% / 90% auto;
+  /* Two background layers: a pale fade (top) over the flower art (bottom).
+     Folding the fade into the background avoids a z-index overlay, which on
+     mobile would let the front label bleed through to the flipped back. */
+  background-color:var(--pale);
+  background-repeat:no-repeat;
+  background-position:center, center 28%;
+  background-size:100% 100%, 90% auto;
 }
-/* per-city flower art */
-#milano    .face.front{ background-image:url('magnolia.png'); }
-#paris     .face.front{ background-image:url('iris.png'); }
-#london    .face.front{ background-image:url('rosebay.png'); }
-#amsterdam .face.front{ background-image:url('tulip.png'); }
-/* pale fade at the bottom keeps the label legible over the art */
-.face.front::after{
-  content:""; position:absolute; inset:0; pointer-events:none;
-  background:linear-gradient(to top, var(--pale) 15%, rgba(248,245,190,.75) 30%, rgba(248,245,190,0) 52%);
-}
-.face.front > *{ position:relative; z-index:1; }
+/* per-city flower art (fade layer first, image second) */
+#milano    .face.front{ background-image:linear-gradient(to top, var(--pale) 15%, rgba(248,245,190,.75) 30%, rgba(248,245,190,0) 52%), url('magnolia.png'); }
+#paris     .face.front{ background-image:linear-gradient(to top, var(--pale) 15%, rgba(248,245,190,.75) 30%, rgba(248,245,190,0) 52%), url('iris.png'); }
+#london    .face.front{ background-image:linear-gradient(to top, var(--pale) 15%, rgba(248,245,190,.75) 30%, rgba(248,245,190,0) 52%), url('rosebay.png'); }
+#amsterdam .face.front{ background-image:linear-gradient(to top, var(--pale) 15%, rgba(248,245,190,.75) 30%, rgba(248,245,190,0) 52%), url('tulip.png'); }
 /* Phone: cards go full-width, so give them more height and a smaller flower
    so the art sits cleanly above the label instead of overflowing behind it. */
 @media(max-width:600px){
-  .face.front{ min-height:320px; background-size:58% auto; background-position:center 24%; }
+  .face.front{ min-height:320px; background-size:100% 100%, 58% auto; background-position:center, center 24%; }
 }
 .city .cty{ font-family:var(--body); text-transform:uppercase; letter-spacing:.24em; font-size:.72rem; color:var(--plum); }
 .city .flr{ font-family:var(--head); font-size:1.55rem; margin-top:4px; color:var(--plum); }
@@ -639,7 +639,7 @@ footer{ background:var(--foam); padding:80px 0 40px; border-top:1px solid var(--
     </div>
     <div class="foot-bottom">
       <span>Alejandra Lucero · Hana Oplotnik · Maria Luiza Nascimento · Büşra Haşim</span>
-      <span>Communication Design · Alessandro Tunno · June 2026</span>
+      <span>NABA Communication Design · Alessandro Tunno · June 2026</span>
       <span>© 2026 Common Ground</span>
     </div>
   </div>
