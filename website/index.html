@@ -184,7 +184,7 @@ header.nav{
 /* Rituals */
 .rituals{ display:grid; grid-template-columns:repeat(3,1fr); gap:26px; }
 .ritual{ text-align:center; padding:12px; }
-.ritual h3{ font-size:1.5rem; margin-bottom:6px; }
+.ritual h3{ font-family:var(--head); font-size:2.2rem; text-transform:lowercase; margin-bottom:6px; }
 .ritual .sub{ font-family:var(--body); text-transform:uppercase; letter-spacing:.2em; font-size:.7rem; opacity:.7; margin-bottom:14px; }
 .ritual p{ font-size:.98rem; opacity:.88; max-width:30ch; margin:0 auto; }
 
@@ -201,7 +201,7 @@ header.nav{
 .mitem .ds{ font-size:.86rem; color:var(--plum); opacity:.72; margin-top:3px; }
 .special-badge{ display:inline-block; background:var(--plum); color:var(--pale); font-family:var(--head); font-size:1rem; padding:5px 18px; border-radius:8px; margin:32px 0 14px; }
 /* blooms — plum panel with cream text */
-.blooms-col{ background:var(--plum) url('flowers-purple.png') center/cover no-repeat; color:var(--pale); border-radius:20px; padding:30px 26px; }
+.blooms-col{ background:var(--plum) url('flowers-purple.png') center/cover no-repeat; color:var(--pale); border-radius:20px; padding:30px 26px; margin-top:-30px; }
 .blooms-col h3{ color:var(--pale); }
 .blooms-intro{ text-align:center; font-size:.88rem; opacity:.85; margin-bottom:22px; }
 .bloom-city{ margin-bottom:16px; }
@@ -282,6 +282,9 @@ header.nav{
   padding:0; opacity:.9;
 }
 .phrases .row span::after{ content:""; display:inline-block; width:2.2em; height:2.2em; margin:0 44px; vertical-align:middle; background:url('flower-yellow.png') center/contain no-repeat; }
+/* green variant: green band, pale-yellow text + yellow flower */
+.phrases.green{ background:var(--meadow); color:var(--pale); }
+.phrases.green .row span::after{ background-image:url('flower-yellow.png'); }
 @keyframes slide{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
 
 /* Footer */
@@ -309,6 +312,7 @@ footer{ background:var(--foam); padding:80px 0 40px; border-top:1px solid var(--
   .hero-art{ order:-1; margin-top:52px; }
   .hero-art svg{ max-width:260px; }
   .mv, .story, .menu-grid{ grid-template-columns:1fr; }
+  .blooms-col{ margin-top:0; }
   .values{ grid-template-columns:repeat(2,1fr); }
   .rituals{ grid-template-columns:1fr; }
   .cities{ grid-template-columns:1fr 1fr; }
@@ -395,23 +399,23 @@ footer{ background:var(--foam); padding:80px 0 40px; border-top:1px solid var(--
     <div class="values">
       <div class="value">
         <h4>Passion</h4>
-        <p>Is the care behind every detail. It shows in the craft, creativity, and love placed into each product and experience.</p>
+        <p>shows in the craft, creativity, and love placed into each product and experience.</p>
       </div>
       <div class="value">
         <h4>Life</h4>
-        <p>Brings freshness, energy, and movement to the brand. It reflects the beauty of nature and makes the space feel vibrant and full of feeling.</p>
+        <p>brings freshness, vibrancy and reflects the beauty of nature in our space.</p>
       </div>
       <div class="value">
         <h4>Balance</h4>
-        <p>Means harmony between coffee, flowers, and baking. It creates a space that feels calm, warm, and alive at the same time.</p>
+        <p>between coffee, flowers, and baking. It creates a space that feels calm, warm, and alive at the same time.</p>
       </div>
       <div class="value">
         <h4>Community</h4>
-        <p>Is about bringing people together. Common Ground is a place where people can connect, share moments, and feel at home.</p>
+        <p>is about bringing people together in a place where they can share meaningful moments.</p>
       </div>
       <div class="value">
         <h4>Service</h4>
-        <p>Is warm, thoughtful, and attentive. It means making each person feel welcomed, valued, and cared for.</p>
+        <p>means making each person feel welcomed, valued, and cared for.</p>
       </div>
     </div>
   </div>
@@ -440,6 +444,25 @@ footer{ background:var(--foam); padding:80px 0 40px; border-top:1px solid var(--
         <p>Seasonal bouquets and floral details that extend the experience beyond the café and into daily life.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ========================= PHRASES MARQUEE · green (above the menu) ========================= -->
+<section class="phrases green" aria-label="Brand key phrases">
+  <div class="row">
+    <span>Where everyday moments bloom.</span>
+    <span>A soft pause in the rhythm of the city.</span>
+    <span>Let the day unfold, petal by petal.</span>
+    <span>Small rituals, softly flowering.</span>
+    <span>The city blooms here.</span>
+    <span>A place to gather, grow, and bloom.</span>
+    <!-- duplicate for seamless loop -->
+    <span>Where everyday moments bloom.</span>
+    <span>A soft pause in the rhythm of the city.</span>
+    <span>Let the day unfold, petal by petal.</span>
+    <span>Small rituals, softly flowering.</span>
+    <span>The city blooms here.</span>
+    <span>A place to gather, grow, and bloom.</span>
   </div>
 </section>
 
