@@ -28,10 +28,23 @@
   --body: "Mona Sans", "Helvetica Neue", Arial, sans-serif;
 
   --maxw: 1180px;
+  --nav-h: 67px;  /* sticky nav height, used for scroll offset + snap sizing */
 }
 
 *{ box-sizing:border-box; margin:0; padding:0; }
-html{ scroll-behavior:smooth; }
+html{ scroll-behavior:smooth; scroll-padding-top:var(--nav-h); }
+
+/* Web: snap each section to fill the screen (no slivers of the next/prev
+   section). Short sections grow to a full screen and centre their content;
+   tall ones (menu, cities) keep their height and just snap to the top. */
+@media (min-width:921px){
+  html{ scroll-snap-type:y proximity; }
+  .hero, .band, .photo-band, footer{ scroll-snap-align:start; }
+  .band{
+    min-height:calc(100vh - var(--nav-h));
+    display:flex; flex-direction:column; justify-content:center;
+  }
+}
 body{
   font-family:var(--body);
   color:var(--ink);
@@ -133,8 +146,10 @@ header.nav{
 .hero-mark .hero-logo-svg{ display:block; width:100%; height:auto; }
 .hero-mark p{ margin-top:10px; font-family:var(--body); color:var(--plum); font-size:.82rem; line-height:1.3; }
 
-/* Phone: the full poster already shows the phrase + logo/slogan on one screen. */
-@media(max-width:600px){
+/* Show the whole poster (no cropping) on phones AND on any portrait-ish window
+   narrower than the poster's aspect ratio — otherwise object-fit:cover would
+   crop the sides and clip the phrase text. */
+@media (max-width:600px), (max-aspect-ratio:141/200){
   .hero-phrase{ height:auto; overflow:visible; }
   .hero-phrase img{ height:auto; object-fit:unset; }
   .hero-mark{ display:none; }
@@ -365,12 +380,12 @@ footer{ background:var(--foam); padding:80px 0 40px; border-top:1px solid var(--
       <svg class="logo-emblem" viewBox="0 0 950.96 445.93" role="img" aria-label="Common Ground logo" xmlns="http://www.w3.org/2000/svg"><use href="#cg-logo"/></svg>
     </a>
     <nav class="nav-links" id="navlinks">
-      <a href="#values">Values</a>
-      <a href="#rituals">Rituals</a>
-      <a href="#menu">Menu</a>
+      <a href="#values">Our Values</a>
+      <a href="#rituals">Our Rituals</a>
+      <a href="#menu">Our Menu</a>
       <a href="#cities">Our Cities</a>
-      <a href="#manifesto">Manifesto</a>
-      <a href="#contact">Contact</a>
+      <a href="#manifesto">Our Manifesto</a>
+      <a href="#contact">Our Contact</a>
     </nav>
     <button class="nav-toggle" aria-label="Toggle menu" onclick="document.getElementById('navlinks').classList.toggle('open')">
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
