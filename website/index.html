@@ -108,56 +108,35 @@ header.nav{
 /* ============================================================
    Hero
    ============================================================ */
-.hero{ /* flowers-background poster (hero-poster.jpg) */
-  position:relative; background:#D1D88F;
+.hero{ /* live text over the (faded) floral background — crisp at any size */
+  position:relative;
+  min-height:calc(100vh - var(--nav-h));
+  min-height:calc(100dvh - var(--nav-h));
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:40px 20px;
+  background:
+    linear-gradient(rgba(207,214,140,.25), rgba(207,214,140,.25)),
+    #CFD68C url('flowers-bg-new.jpg') center/cover no-repeat;
 }
-.hero .wrap{ display:flex; justify-content:center; width:100%; padding:0; }
-.hero-copy{ padding:60px 0; text-align:center; }
-.hero h1{
-  font-size:clamp(3.4rem,9vw,7rem);
-  color:var(--plum); font-weight:600; letter-spacing:-.02em;
-  line-height:.95;
+/* wide screens: the landscape floral spreads flowers across the whole hero */
+@media (min-width:921px){
+  .hero{ background:
+    linear-gradient(rgba(207,214,140,.25), rgba(207,214,140,.25)),
+    #CFD68C url('flowers-bg.jpg') center/cover no-repeat; }
 }
-.hero h1 span{ display:block; font-weight:300; }
-.hero .tagline{ font-size:clamp(1.1rem,2.4vw,1.5rem); margin:26px 0 18px; }
-.hero .hero-tagline{ font-size:clamp(1.5rem,3.4vw,2.1rem); margin:18px 0 20px; line-height:1.15; }
-.hero p.lead{ max-width:34ch; margin-inline:auto; font-size:1.05rem; opacity:.85; }
-.trio{
-  display:flex; justify-content:center; gap:14px; margin-top:34px; flex-wrap:wrap;
-  font-family:var(--head); font-size:1.15rem; color:var(--plum);
+.hero-title{
+  font-family:var(--body); font-weight:400; color:var(--plum);
+  font-size:clamp(2.1rem,6.4vw,4.4rem); line-height:1.08; letter-spacing:-.01em;
 }
-.trio span{
-  padding:8px 20px; border:1px solid var(--plum); border-radius:100px;
-  font-weight:400; letter-spacing:.04em;
-  background:var(--plum); color:var(--foam);
-}
-.hero-art{ display:flex; justify-content:center; align-items:center; }
-.hero-art .hero-logo{ width:100%; max-width:420px; height:auto; }
-/* Desktop/web: two windows into the same poster.
-   Top window fills the viewport with the phrase centred;
-   bottom window reveals the logo + slogan on scroll. */
-.hero-phrase{ height:100vh; overflow:hidden; }
-.hero-phrase img{ display:block; width:100%; height:100%; object-fit:cover; object-position:center 56%; }
-/* small logo lockup sitting under the phrase */
+.hero-title b{ font-weight:800; }
+.hero-title em{ font-style:italic; font-weight:400; }
+/* logo + slogan lockup near the bottom of the hero */
 .hero-mark{
-  position:absolute; left:50%; bottom:14%; transform:translateX(-50%);
-  width:min(180px,44vw); text-align:center; z-index:2;
+  position:absolute; left:50%; bottom:7%; transform:translateX(-50%);
+  width:min(200px,46vw); text-align:center;
 }
 .hero-mark .hero-logo-svg{ display:block; width:100%; height:auto; }
 .hero-mark p{ margin-top:10px; font-family:var(--body); color:var(--plum); font-size:.82rem; line-height:1.3; }
-
-/* Show the whole poster (no cropping) on phones AND on any portrait-ish window
-   narrower than the poster's aspect ratio — otherwise object-fit:cover would
-   crop the sides and clip the phrase text. */
-@media (max-width:600px), (max-aspect-ratio:141/200){
-  /* fill the screen with the green hero, poster centred, so the next
-     (yellow) section doesn't peek below the fold */
-  .hero{ min-height:calc(100vh - var(--nav-h)); min-height:calc(100dvh - var(--nav-h));
-         display:flex; flex-direction:column; justify-content:center; }
-  .hero-phrase{ height:auto; overflow:visible; }
-  .hero-phrase img{ height:auto; object-fit:unset; }
-  .hero-mark{ display:none; }
-}
 
 /* ============================================================
    Generic section
@@ -401,11 +380,9 @@ footer{ background:var(--foam); padding:80px 0 40px; border-top:1px solid var(--
   </div>
 </header>
 
-<!-- ========================= HERO (full-width cover poster, intro.png hi-res) ========================= -->
+<!-- ========================= HERO (live text over the floral background) ========================= -->
 <section class="hero" id="top">
-  <div class="hero-phrase">
-    <img src="hero-poster.jpg" alt="Common Ground — Rooted in the earth, gathered in the city." />
-  </div>
+  <h1 class="hero-title">Rooted in the<br><b>earth,</b> <em>gathered</em><br>in the <b>city.</b></h1>
   <div class="hero-mark">
     <svg class="hero-logo-svg" viewBox="0 0 950.96 445.93" role="img" aria-label="Common Ground logo" xmlns="http://www.w3.org/2000/svg"><use href="#cg-logo"/></svg>
     <p>rooted in nature, shaped by connection.</p>
