@@ -708,13 +708,23 @@ footer{ background:var(--foam); padding:80px 0 40px; border-top:1px solid var(--
     });
   }
 
-  // Footer "Visit" links: scroll to the city and open (flip) its card.
+  // Footer "Visit" links: smooth-scroll to the city, then open (flip) its card
+  // once you've arrived, so the reveal reads as one smooth motion.
   document.querySelectorAll('.foot-nav a[href^="#"]').forEach(function(a){
-    a.addEventListener('click', function(){
+    a.addEventListener('click', function(ev){
       var target = document.getElementById(a.getAttribute('href').slice(1));
-      if (target && target.classList.contains('city')) {
-        document.querySelectorAll('.city.flipped').forEach(function(c){ if (c !== target) c.classList.remove('flipped'); });
-        target.classList.add('flipped');
+      if (!target || !target.classList.contains('city')) return;
+      ev.preventDefault();
+      document.querySelectorAll('.city.flipped').forEach(function(c){ if (c !== target) c.classList.remove('flipped'); });
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      var opened = false;
+      var open = function(){ if (!opened) { opened = true; target.classList.add('flipped'); } };
+      if ('onscrollend' in window) {
+        var onEnd = function(){ setTimeout(open, 120); window.removeEventListener('scrollend', onEnd); };
+        window.addEventListener('scrollend', onEnd);
+        setTimeout(open, 1100); // fallback if scrollend never fires
+      } else {
+        setTimeout(open, 600); // approximate the smooth-scroll duration
       }
     });
   });
