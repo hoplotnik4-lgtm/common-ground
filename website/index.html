@@ -150,6 +150,10 @@ header.nav{
    narrower than the poster's aspect ratio — otherwise object-fit:cover would
    crop the sides and clip the phrase text. */
 @media (max-width:600px), (max-aspect-ratio:141/200){
+  /* fill the screen with the green hero, poster centred, so the next
+     (yellow) section doesn't peek below the fold */
+  .hero{ min-height:calc(100vh - var(--nav-h)); min-height:calc(100dvh - var(--nav-h));
+         display:flex; flex-direction:column; justify-content:center; }
   .hero-phrase{ height:auto; overflow:visible; }
   .hero-phrase img{ height:auto; object-fit:unset; }
   .hero-mark{ display:none; }
@@ -195,6 +199,10 @@ header.nav{
 .value:hover{ transform:translateY(-6px); box-shadow:0 18px 40px -22px rgba(111,2,68,.45); }
 .value h4{ font-family:var(--head); font-weight:400; font-size:1.55rem; color:var(--plum); margin-bottom:10px; }
 .value p{ font-size:.82rem; color:var(--ink); opacity:.85; line-height:1.5; }
+/* Phone: slimmer cards (narrower, a touch less padding) for a tidier column. */
+@media(max-width:600px){
+  .value{ max-width:300px; margin-inline:auto; padding:22px 24px; }
+}
 
 /* Rituals */
 .rituals{ display:grid; grid-template-columns:repeat(3,1fr); gap:26px; }
@@ -698,6 +706,25 @@ footer{ background:var(--foam); padding:80px 0 40px; border-top:1px solid var(--
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
       });
     });
+  }
+
+  // Footer "Visit" links: scroll to the city and open (flip) its card.
+  document.querySelectorAll('.foot-nav a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(){
+      var target = document.getElementById(a.getAttribute('href').slice(1));
+      if (target && target.classList.contains('city')) {
+        document.querySelectorAll('.city.flipped').forEach(function(c){ if (c !== target) c.classList.remove('flipped'); });
+        target.classList.add('flipped');
+      }
+    });
+  });
+
+  // Close an open city card once it scrolls out of view.
+  if ('IntersectionObserver' in window) {
+    var cityObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if (!e.isIntersecting) e.target.classList.remove('flipped'); });
+    });
+    document.querySelectorAll('.city').forEach(function(c){ cityObserver.observe(c); });
   }
 </script>
 </body>
